@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Lands - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url('https://i.pinimg.com/originals/90/70/32/9070324cdfc07c68d60eed0c39e77573.gif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        .login-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            padding: 10px;
+            background: yellow;
+            color: black;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .login-container button:hover {
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="loginForm">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="validateLogin()">Login</button>
+        <p id="error-message" style="color: red;"></p>
+    </div>
+
+    <div id="mainContent" style="display: none;">
+        <header>
+            <h1>User Lands</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#getInvolved">Get Involved</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section id="about">
+            <h2>About Us</h2>
+            
+            <button id="missionBtn">Mission explanation</button></br>
+            <button id="teamBtn">team background</button></br>
+            <button id="impactBtn">Impact insights</button></br>
+        </section>
+
+        <section id="resources">
+            <h2>Resources</h2>
+           
+            <button id="educationalBtn">Educational content</button></br>
+            <button id="multimediaBtn">Multimedia resources</button></br>
+            <button id="interactiveBtn">Interactive tools</button></br>
+        </section>
+
+        <section id="getInvolved">
+            <h2>Get Involved</h2>
+            <button id="volunteerBtn">Volunteer Signup</button></br>
+            <button id="donateBtn">Donate Now</button></br>
+            <button id="workshopBtn">Register for Workshop</button></br>
+        </section>
+
+        <section id="research">
+            <h2>Research</h2>
+            <button id="CurrentBtn">Current projects</button></br>
+            <button id="PublishedBtn">Published findings</button></br>
+            <button id="DataBtn">Data visualization</button></br>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Inquiry form, team communication, and support channels.</p>
+            <button id="inquiryBtn">Inquiry form</button></br>
+            <button id="teamcommunicationBtn">Team communication</button></br>
+            <button id="supportBtn">Support channels</button></br>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 User Lands ; Emar Lineses, All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        let lockout = false;
+
+        function validateLogin() {
+            if (lockout) return;
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+
+            if (username === "admin123" && password === "password") {
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("mainContent").style.display = "block";
+            } else {
+                errorMessage.textContent = "Invalid credentials. Try again in 10 seconds.";
+                lockout = true;
+                setTimeout(() => {
+                    errorMessage.textContent = "";
+                    lockout = false;
+                }, 10000);
+            }
+        }
+    </script>
+</body>
+</html>
